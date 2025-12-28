@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #0a0a0a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.clock {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.digit {
+    display: grid;
+    grid-template-columns: repeat(3, 10px);
+    grid-template-rows: repeat(5, 10px);
+    gap: 3px;
+    padding: 8px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.tile {
+    width: 10px;
+    height: 10px;
+    border-radius: 1px;
+    background: #1a1a1a;
+    transform: scale(0, 6) rotateX(90deg);
+    opacity: 0;
+    transition: 
+        transform 0.6s cubic-bezier(2, 8, 2, 1),
+        opacity 0.4s ease,
+        background 0.3s ease;
+}
+
+.tile.on {
+    background: linear-gradient(135deg, #00f5ff, #7cffcb);
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+    box-shadow: 0 6px 18px rgba(0, 255, 220, 0, 0.35);
+}
+
+.colon {
+    display: grid;
+    place-items: center;
+    color: #7cffcb;
+    font-size: 50px;
+    opacity: 0.7;
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.15;
+    }
+}
